@@ -1,0 +1,32 @@
+// Comments!
+// Variables
+int x = -10;
+uint x = 10;
+num x = 3.14159;
+string x = "Hello!";
+list x = [0, "Hello!"];
+bool x = false;
+char x = 'A';
+vec x = <0, 1>;
+coord x = (0, 2)
+
+// Strongly typed mutation
+x >> 5;
+
+// Functions
+func my_function(type a, type b) -> type {
+    <body>
+}
+
+func distance(coord a, coord b) -> num {
+    return math.sqrt(((b.x - a.x)^2) + ((b.y - a.y)^2));
+}
+
+func say_hello() {
+    print("Hello");
+}
+
+// All Darcy programs require a main() entry
+func main() {
+    print("Hello, world!");
+}
