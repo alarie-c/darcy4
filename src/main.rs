@@ -1,8 +1,10 @@
-use std::{env, fs};
 use lexer::Lexer;
+use parser::Parser;
+use std::{env, fs};
 
-mod token;
 mod lexer;
+mod parser;
+mod token;
 
 // split source code by lines
 fn lines(source: &String) -> Vec<String> {
@@ -22,14 +24,16 @@ fn main() {
         let mut lexer = match Lexer::new(source.chars().peekable()) {
             Some(lexer) => lexer,
             None => std::process::exit(0),
-        }; 
+        };
 
         lexer.scan();
         println!("{:#?}", lexer.output);
 
+        let mut parser = Parser::new(&lexer.output);
+        parser.parse();
+
         //println!("{}", source);
         //println!("\n\n\n{:#?}", lines(&source));
-
     } else {
         panic!("[DY4] File path not specified");
     }

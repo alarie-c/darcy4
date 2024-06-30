@@ -1,6 +1,5 @@
-use std::iter::Peekable;
-
 use crate::token::Token;
+use std::iter::Peekable;
 
 // takes a stream of chars and creates tokenized output
 pub struct Lexer<Iter: Iterator<Item = char>> {
@@ -315,7 +314,7 @@ impl<Iter: Iterator<Item = char>> Lexer<Iter> {
             // number literals
             '0'..='9' => {
                 let number = self.take_number();
-                self.push(Token::Number {
+                self.push(Token::Numeric {
                     offset: self.offset,
                     value: number,
                 })
@@ -353,7 +352,7 @@ impl<Iter: Iterator<Item = char>> Lexer<Iter> {
                     }),
 
                     // identifers
-                    _ => self.push(Token::Indent {
+                    _ => self.push(Token::Ident {
                         offset: self.offset,
                         value: alphanum,
                     }),

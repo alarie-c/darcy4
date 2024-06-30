@@ -1,4 +1,4 @@
-#[derive(Debug, PartialEq)]
+#[derive(Debug, PartialEq, Eq)]
 pub enum Token {
     // grouping
     LParen { offset: usize },
@@ -37,8 +37,8 @@ pub enum Token {
 
     // literals
     String { offset: usize, value: String },
-    Indent { offset: usize, value: String },
-    Number { offset: usize, value: String },
+    Ident { offset: usize, value: String },
+    Numeric { offset: usize, value: String },
 
     // keywords
     Return { offset: usize },
