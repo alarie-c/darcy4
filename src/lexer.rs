@@ -142,6 +142,18 @@ impl<Iter: Iterator<Item = char>> Lexer<Iter> {
             ')' => self.push(Token::RParen {
                 offset: self.offset,
             }),
+            '{' => self.push(Token::LCurl {
+                offset: self.offset,
+            }),
+            '}' => self.push(Token::RCurl {
+                offset: self.offset,
+            }),
+            '[' => self.push(Token::LBrac {
+                offset: self.offset,
+            }),
+            ']' => self.push(Token::RBrac {
+                offset: self.offset,
+            }),
             ';' => self.push(Token::SemiColon {
                 offset: self.offset,
             }),
@@ -327,7 +339,16 @@ impl<Iter: Iterator<Item = char>> Lexer<Iter> {
                     "return" => self.push(Token::Return {
                         offset: self.offset,
                     }),
-                    "fn" => self.push(Token::Fn {
+                    "func" => self.push(Token::Func {
+                        offset: self.offset,
+                    }),
+                    "if" => self.push(Token::If {
+                        offset: self.offset,
+                    }),
+                    "else" => self.push(Token::Else {
+                        offset: self.offset,
+                    }),
+                    "elif" => self.push(Token::Elif {
                         offset: self.offset,
                     }),
 

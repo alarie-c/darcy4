@@ -42,7 +42,7 @@ pub enum Token {
 
     // keywords
     Return { offset: usize },
-    Fn { offset: usize },
+    Func { offset: usize },
     If { offset: usize },
     Else { offset: usize },
     Elif { offset: usize },
